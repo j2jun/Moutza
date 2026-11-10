@@ -60,7 +60,7 @@ class MoutzaTest(unittest.TestCase):
         status, body, _ = self.req(h["Location"])
         self.assertEqual(status, 200)
         self.assertIn("Merit Scholarship Guide", body)
-        similar = body.split("Similar resources")[1]
+        similar = body.split("Pinned nearby")[1]
         self.assertIn("Need-based grants", similar)
         self.assertNotIn("Robotics Club", similar)
 
@@ -71,6 +71,12 @@ class MoutzaTest(unittest.TestCase):
         _, body, _ = self.req("/?school=Tech+Institute")
         self.assertIn("Robotics Club", body)
         self.assertNotIn("Merit Scholarship Guide", body)
+
+    def test_random_redirects_to_a_flyer(self):
+        self.post(title="Any", url="https://a.b", school="s")
+        status, _, h = self.req("/random")
+        self.assertEqual(status, 303)
+        self.assertRegex(h["Location"], r"^/r/\d+$")
 
     def test_rejects_bad_input(self):
         for form in ({"title": "x", "url": "javascript:alert(1)", "school": "s"},

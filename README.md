@@ -3,9 +3,13 @@
 Share and find useful resources about universities and student organizations:
 scholarships, clubs, housing guides, course tips, and more.
 
-- **Share** a link with a title, school, tags, and description.
-- **Search** with relevance ranking (local TF-IDF, no external AI service, no cost).
-- **Filter** by school, and see **similar resources** on every resource page.
+It looks like a campus corkboard: every resource is a pinned paper flyer, colored by its topic.
+
+- **Pin a flyer**: share a link with a title, school, tags, and description.
+- **Search** with relevance ranking (local TF-IDF, no external AI service, no cost), and filter by school.
+- **Tear-off tabs** on each flyer open its link, and **Pinned nearby** suggests similar flyers.
+- **Surprise me** opens a random flyer.
+- Works on phones, in dark mode, and with reduced motion.
 
 ## Run
 
